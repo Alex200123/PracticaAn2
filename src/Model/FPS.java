@@ -4,35 +4,34 @@ public class FPS implements Video_game_genre
 {
 
 	private String name;
-	private String Description;
+	private String description;
 	private int score;
 	
 	@Override
-	public void Set(String name, String description, int score) 
+	public void Set(String n, String d, int s) 
 	{
-		// TODO Auto-generated method stub
+		this.name = n;
+		this.description = d;
+		this.score = s;
 		
 	}
 
 	@Override
 	public String Get_name() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	@Override
 	public String Get_description() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.description;
 	}
 
 	@Override
 	public int Get_score() 
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return this.score;
 	}
 
 }
