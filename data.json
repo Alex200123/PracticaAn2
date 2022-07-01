@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Doom",
+      "description": "Demons try to destroy Humanity, you are the only thing that can stop them",
+	  "score": 10,
+	  "tag": "Action"
+    },
+    {
+      "name": "StarCraft2",
+      "description": "Choose one of 3 factions, the stuborn Terrans, the ever evolving Zerg, or the imensly powerful Protoss and wage war",
+	  "score": 10,
+	  "tag": "Strategy"
+    },
+  {
+    "name": "Kingdoms of Amalur",
+      "description": "In a world governed by fate, you are the one that has no fate, and can choose your own path",
+	  "score": 9,
+	  "tag": "Fantasy"
+  }
+]
