@@ -11,7 +11,8 @@ public class Main {
 		List_of_games list = new List_of_games();
 		Save_data saved = new Save_data();
 		
-		test.Read_games_from_JSON(list);
+		//test.Read_games_from_JSON(list);
+		test.Read_games_from_JSON_saved_list(list);
 		list.Write_games();
 		saved.Create_JSON(list);
 		

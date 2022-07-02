@@ -92,4 +92,24 @@ public class Load_data {
         	}
         }
 	}
+	
+	public void Read_games_from_JSON_saved_list(List_of_games list)
+	{
+		try {
+			
+			
+			String strJson = this.Get_JSON_As_Text("saved_list.json");
+			
+			JSONParser parser = new JSONParser();
+	        Object object = parser.parse(strJson);
+	        JSONArray mainJsonObject = (JSONArray) object;
+	        
+	        Add_objects_from_JSON(mainJsonObject, list);
+	         
+		} catch (Exception ex) {
+		    ex.printStackTrace();
+		}
+	}
 }
+
+

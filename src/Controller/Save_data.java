@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import Model.List_of_games;
@@ -20,26 +21,33 @@ public class Save_data {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		JSONObject obj = new JSONObject();
+		
+		JSONArray obj_list = new JSONArray();
 		
 		for(int i = 0; i < list.Get_number_of_elements_in_list(); i++)
 		{
-			obj.put("name", list.Get_games_list().get(i).Get_name());
-			obj.put("description", list.Get_games_list().get(i).Get_description());
-			obj.put("score", list.Get_games_list().get(i).Get_score());
-			obj.put("tag", list.Get_games_list().get(i).Get_tag());
+			JSONObject obj_atributes = new JSONObject();
 			
-			try 
-			{
-				file = new FileWriter("saved_list.json", true);
-				file.write(obj.toJSONString());
-				file.close();
-			}
-			catch (IOException e) 
-			{
-	            e.printStackTrace();
-	        }
-        }
+			obj_atributes.put("name", list.Get_games_list().get(i).Get_name());
+			obj_atributes.put("description", list.Get_games_list().get(i).Get_description());
+			obj_atributes.put("score", list.Get_games_list().get(i).Get_score());
+			obj_atributes.put("tag", list.Get_games_list().get(i).Get_tag());
+			
+			obj_list.add(obj_atributes);
+			
+		}
 		
-	}
+		try(FileWriter file = new FileWriter("saved_list.json"))
+		{
+			
+			file.write(obj_list.toJSONString());
+			file.close();
+		}
+		catch (IOException e) 
+		{
+            e.printStackTrace();
+        }
+    }
+		
 }
+
