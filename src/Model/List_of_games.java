@@ -1,8 +1,10 @@
 package Model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
-public class List_of_games {
+public class List_of_games implements ActionListener{
 
 	private Vector <Video_game_genre> games;
 	
@@ -32,6 +34,11 @@ public class List_of_games {
 	public Vector <Video_game_genre> Get_games_list()
 	{
 		return games;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Write_games();
 	}
 	
 }
