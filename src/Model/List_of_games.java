@@ -39,6 +39,7 @@ public class List_of_games implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Write_games();
+		
 	}
 	
 }

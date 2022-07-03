@@ -32,7 +32,18 @@ public class Interface implements ActionListener
 		button.addActionListener(this);
 		JButton button1 = new JButton("test2");
 		
-		button1.addActionListener(listener);
+		button1.addActionListener(new ActionListener()
+			{
+		
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println(1);
+			}
+			});
+		
+		
+		
 		
 		panel.setBorder(BorderFactory.createBevelBorder(1));
 		panel.add(button);
