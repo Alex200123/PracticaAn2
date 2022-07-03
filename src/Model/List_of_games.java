@@ -13,6 +13,11 @@ public class List_of_games implements ActionListener{
 		this.games = new Vector<Video_game_genre>();
 	}
 	
+	public List_of_games(List_of_games existing_list)
+	{
+		this.games = existing_list.Get_games_list();
+	}
+	
 	public void Add_game_to_list(Video_game_genre game)
 	{
 		games.add(game);
