@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-public class List_of_games implements ActionListener{
+public class List_of_games{
 
 	private Vector <Video_game_genre> games;
 	
@@ -40,11 +40,4 @@ public class List_of_games implements ActionListener{
 	{
 		return games;
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Write_games();
-		
-	}
-	
 }
