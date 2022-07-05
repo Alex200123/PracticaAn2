@@ -27,10 +27,12 @@ public class Panels_class
 	private JPanel list_of_games_panel;
 	private JScrollPane list_of_games_scroll_panel;
 	private JPanel the_3_options_panel;
+	private JPanel pop_up_description_per_game[];
+	private JScrollPane pop_up_description_per_game_scroll[];
 	private int index = 0;
 
 	
-	Panels_class()
+	Panels_class(List_of_games existing_list)
 	{
 		main_panel = new JPanel();
 		main_panel.setLayout(null);
@@ -41,6 +43,14 @@ public class Panels_class
 		the_3_options_panel = new JPanel();
 		the_3_options_panel.setBounds(0, 0, 1000, 700);
 		the_3_options_panel.setLayout(null);
+		pop_up_description_per_game_scroll = new JScrollPane[existing_list.Get_number_of_elements_in_list()];
+		pop_up_description_per_game = new JPanel[existing_list.Get_number_of_elements_in_list()];
+		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
+		{
+			pop_up_description_per_game[i] = new JPanel();
+			pop_up_description_per_game[i].setLayout(null);
+			
+		}
 	}
 	
 	
@@ -53,12 +63,18 @@ public class Panels_class
 		main_panel.add(labels.Get_main_label3());
 	}
 	
-	public void Add_components_to_list_of_games_panel(Buttons_class buttons, List_of_games existing_list)
+	public void Add_components_to_list_of_games_panel(Buttons_class buttons, List_of_games existing_list, Labels_class labels)
 	{
 		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
 			list_of_games_panel.add(buttons.Get_list_of_buttons_for_games()[i]);
+			
+			pop_up_description_per_game[i].add(labels.Get_list_of_games_description_label()[i]);
+			pop_up_description_per_game[i].add(labels.Get_list_of_games_score_label()[i]);
+			pop_up_description_per_game[i].add(buttons.Get_list_of_back_buttons_in_list_of_buttons_for_games()[i]);
+			pop_up_description_per_game_scroll[i] = new JScrollPane(pop_up_description_per_game[i]);
+			pop_up_description_per_game_scroll[i].setBounds(0, 0, 1500, 300);
 		}
 		
 		
@@ -67,6 +83,14 @@ public class Panels_class
 	}
 	
 	public void Add_components_to_the_3_options_panell(Buttons_class buttons)
+	{
+		
+		the_3_options_panel.add(buttons.Get_add_game_to_list());
+		the_3_options_panel.add(buttons.Get_find_a_good_game_based_on_preferance());
+		the_3_options_panel.add(buttons.Get_rate_a_game());
+	}
+	
+	public void Add_components_to_panel_that_pops_up_per_game(Buttons_class buttons)
 	{
 		
 		the_3_options_panel.add(buttons.Get_add_game_to_list());
@@ -89,7 +113,10 @@ public class Panels_class
 		return list_of_games_scroll_panel;
 	}
 	
-	
+	public JScrollPane[] Get_pop_up_description_per_game_scroll()
+	{
+		return pop_up_description_per_game_scroll;
+	}
 	
 	
 	
