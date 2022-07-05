@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -27,8 +28,9 @@ public class Panels_class
 	private JPanel list_of_games_panel;
 	private JScrollPane list_of_games_scroll_panel;
 	private JPanel the_3_options_panel;
-	private JPanel pop_up_description_per_game[];
-	private JScrollPane pop_up_description_per_game_scroll[];
+	private Vector<JPanel> pop_up_description_per_game;
+	private Vector<JScrollPane> pop_up_description_per_game_scroll;
+	private JPanel add_a_game_panel;
 	private int index = 0;
 
 	
@@ -39,18 +41,21 @@ public class Panels_class
 		main_panel.setBorder(BorderFactory.createBevelBorder(1));	
 		list_of_games_panel = new JPanel();
 		
-		
+		pop_up_description_per_game = new Vector<JPanel>();
+		pop_up_description_per_game_scroll = new Vector<JScrollPane>();
 		the_3_options_panel = new JPanel();
 		the_3_options_panel.setBounds(0, 0, 1000, 700);
 		the_3_options_panel.setLayout(null);
-		pop_up_description_per_game_scroll = new JScrollPane[existing_list.Get_number_of_elements_in_list()];
-		pop_up_description_per_game = new JPanel[existing_list.Get_number_of_elements_in_list()];
+		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
-			pop_up_description_per_game[i] = new JPanel();
-			pop_up_description_per_game[i].setLayout(null);
-			
+			JPanel temp_description = new JPanel();
+			temp_description.setLayout(null);
+			pop_up_description_per_game.add(temp_description);
 		}
+		
+		add_a_game_panel = new JPanel();
+		add_a_game_panel.setLayout(null);
 	}
 	
 	
@@ -68,13 +73,15 @@ public class Panels_class
 		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
-			list_of_games_panel.add(buttons.Get_list_of_buttons_for_games()[i]);
+			list_of_games_panel.add(buttons.Get_list_of_buttons_for_games().get(i));
 			
-			pop_up_description_per_game[i].add(labels.Get_list_of_games_description_label()[i]);
-			pop_up_description_per_game[i].add(labels.Get_list_of_games_score_label()[i]);
-			pop_up_description_per_game[i].add(buttons.Get_list_of_back_buttons_in_list_of_buttons_for_games()[i]);
-			pop_up_description_per_game_scroll[i] = new JScrollPane(pop_up_description_per_game[i]);
-			pop_up_description_per_game_scroll[i].setBounds(0, 0, 1500, 300);
+			pop_up_description_per_game.get(i).add(labels.Get_list_of_games_description_label().get(i));
+			pop_up_description_per_game.get(i).add(labels.Get_list_of_games_score_label().get(i));
+			pop_up_description_per_game.get(i).add(buttons.Get_list_of_back_buttons_in_list_of_buttons_for_games().get(i));
+			
+			JScrollPane temp_scroll_description = new JScrollPane(pop_up_description_per_game.get(i));
+			temp_scroll_description.setBounds(0, 0, 1500, 300);
+			pop_up_description_per_game_scroll.add(temp_scroll_description);
 		}
 		
 		
@@ -98,9 +105,28 @@ public class Panels_class
 		the_3_options_panel.add(buttons.Get_rate_a_game());
 	}
 	
+	public void Add_components_to_add_a_game_panel(Buttons_class buttons, List_of_games existing_list, Labels_class labels, TextField_class text_field)
+	{
+		add_a_game_panel.add(buttons.Get_add_button_in_add_a_game());
+		add_a_game_panel.add(text_field.Get_text_field_game_name());
+		add_a_game_panel.add(text_field.Get_text_field_game_description());
+		add_a_game_panel.add(text_field.Get_text_field_game_score());
+		add_a_game_panel.add(text_field.Get_text_field_game_tag());
+	}
+	
 	public JPanel Get_main_panel()
 	{
 		return main_panel;
+	}
+	
+	public JPanel Get_add_a_game_panel()
+	{
+		return add_a_game_panel;
+	}
+	
+	public JPanel Get_list_of_games_panel()
+	{
+		return list_of_games_panel;
 	}
 	
 	public JPanel Get_the_3_options_panel()
@@ -113,11 +139,15 @@ public class Panels_class
 		return list_of_games_scroll_panel;
 	}
 	
-	public JScrollPane[] Get_pop_up_description_per_game_scroll()
+	public Vector<JScrollPane> Get_pop_up_description_per_game_scroll()
 	{
 		return pop_up_description_per_game_scroll;
 	}
 	
+	public Vector<JPanel> Get_pop_up_description_per_game()
+	{
+		return pop_up_description_per_game;
+	}
 	
 	
 }

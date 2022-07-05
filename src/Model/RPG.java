@@ -51,4 +51,11 @@ public class RPG implements Video_game_genre
 		System.out.println(this.Get_tag() + "\n");
 		
 	}
+
+	@Override
+	public void Set_tag() 
+	{
+		this.tag = "Fantasy";
+		
+	}
 }

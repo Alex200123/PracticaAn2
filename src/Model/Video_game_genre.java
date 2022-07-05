@@ -8,4 +8,5 @@ public interface Video_game_genre {
 	public long Get_score();
 	public String Get_tag();
 	public void Print_content();
+	public void Set_tag();
 }

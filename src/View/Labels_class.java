@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Font;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 
@@ -12,8 +13,8 @@ public class Labels_class
 	private JLabel main_label2;
 	private JLabel main_label3;
 	
-	private JLabel list_of_games_description_label[];
-	private JLabel list_of_games_score_label[];
+	private Vector<JLabel> list_of_games_description_label;
+	private Vector<JLabel> list_of_games_score_label;
 	
 	
 	Labels_class(List_of_games existing_list)
@@ -28,22 +29,24 @@ public class Labels_class
 		main_label3.setBounds(300, 150, 400, 25);
 		main_label3.setFont(new Font("Serif", Font. BOLD, 20));
 		
+		list_of_games_description_label = new Vector<JLabel>();
+		list_of_games_score_label = new Vector<JLabel>();
 		
-		list_of_games_description_label = new JLabel[existing_list.Get_number_of_elements_in_list()];
-		list_of_games_score_label = new JLabel[existing_list.Get_number_of_elements_in_list()];
+		
 		
 		for(int j = 0; j < existing_list.Get_number_of_elements_in_list(); j++)
 		{
-			
-			
-			list_of_games_description_label[j] = new JLabel(existing_list.Get_games_list().get(j).Get_description());
-			list_of_games_description_label[j].setBounds(0, 0, 1000, 25);
-			list_of_games_description_label[j].setFont(new Font("Serif", Font. BOLD, 20));
+			JLabel temp_description = new JLabel(existing_list.Get_games_list().get(j).Get_description());
+			temp_description.setBounds(0, 0, 1000, 25);
+			temp_description.setFont(new Font("Serif", Font. BOLD, 20));
+			list_of_games_description_label.add(temp_description);
 			
 			final String temp = existing_list.Get_games_list().get(j).Get_score() + "";
-			list_of_games_score_label[j] = new JLabel("Score: " + temp);
-			list_of_games_score_label[j].setBounds(0, 25, 150, 25);
-			list_of_games_score_label[j].setFont(new Font("Serif", Font. BOLD, 20));			
+			JLabel temp_score = new JLabel(temp);
+			temp_score = new JLabel("Score: " + temp);
+			temp_score.setBounds(0, 25, 150, 25);
+			temp_score.setFont(new Font("Serif", Font. BOLD, 20));			
+			list_of_games_score_label.add(temp_score);
 		}
 	}
 	
@@ -67,26 +70,20 @@ public class Labels_class
 	
 
 
-	public JLabel[] Get_list_of_games_description_label() 
+	public Vector<JLabel> Get_list_of_games_description_label() 
 	{
 		return list_of_games_description_label;
 	}
 
 
-	public void Set_list_of_games_description_label(JLabel[] list_of_games_description_label)
-	{
-		this.list_of_games_description_label = list_of_games_description_label;
-	}
+	
 
 
-	public JLabel[] Get_list_of_games_score_label() 
+	public Vector<JLabel> Get_list_of_games_score_label() 
 	{
 		return list_of_games_score_label;
 	}
 
 
-	public void Set_list_of_games_score_label(JLabel[] list_of_games_score_label)
-	{
-		this.list_of_games_score_label = list_of_games_score_label;
-	}
+	
 }
