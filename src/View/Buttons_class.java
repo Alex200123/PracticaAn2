@@ -21,7 +21,7 @@ public class Buttons_class
 	private JButton find_a_good_game_based_on_preferance;
 	private JButton rate_a_game;
 	private JButton list_of_buttons_for_games[];
-	private int number_of_buttons = 0;
+	private int number_of_buttons_in_list_of_buttons = 0;
 	
 	
 	public Buttons_class(JFrame main_frame, JFrame the_3_options_frame, List_of_games existing_list)
@@ -54,7 +54,7 @@ public class Buttons_class
 		{
 			list_of_buttons_for_games[i] = new JButton(existing_list.Get_games_list().get(i).Get_name());
 			
-			number_of_buttons++;
+			number_of_buttons_in_list_of_buttons++;
 		}
 		Add_list_of_buttons_for_games_functionality(existing_list);
 		
@@ -75,7 +75,7 @@ public class Buttons_class
 	
 	private void Add_list_of_buttons_for_games_functionality(List_of_games existing_list)
 	{
-		for(int i = 0; i < number_of_buttons; i ++)
+		for(int i = 0; i < number_of_buttons_in_list_of_buttons; i ++)
 		{	
 			list_of_buttons_for_games[i].addActionListener(new ActionListener()
 			{
@@ -83,7 +83,7 @@ public class Buttons_class
 				public void actionPerformed(ActionEvent e)
 				{
 					JButton temporar = (JButton) e.getSource();
-					for(int i = 0; i < number_of_buttons; i++)
+					for(int i = 0; i < number_of_buttons_in_list_of_buttons; i++)
 					{
 						if(Objects.equals(temporar.getText(), 
 								list_of_buttons_for_games[i].getText()))

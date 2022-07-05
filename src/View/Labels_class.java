@@ -9,6 +9,9 @@ public class Labels_class
 	private JLabel main_label1;
 	private JLabel main_label2;
 	private JLabel main_label3;
+	private JLabel list_of_games_name_label;
+	private JLabel list_of_games_description_label;
+	private JLabel list_of_games_score_label;
 	
 	
 	Labels_class()
@@ -38,5 +41,41 @@ public class Labels_class
 	public JLabel Get_main_label3()
 	{
 		return main_label3;
+	}
+
+
+	public JLabel Get_list_of_games_name_label() 
+	{
+		return list_of_games_name_label;
+	}
+
+
+	public void Set_list_of_games_name_label(JLabel list_of_games_name_label) 
+	{
+		this.list_of_games_name_label = list_of_games_name_label;
+	}
+
+
+	public JLabel Get_list_of_games_description_label() 
+	{
+		return list_of_games_description_label;
+	}
+
+
+	public void Set_list_of_games_description_label(JLabel list_of_games_description_label)
+	{
+		this.list_of_games_description_label = list_of_games_description_label;
+	}
+
+
+	public JLabel Get_list_of_games_score_label() 
+	{
+		return list_of_games_score_label;
+	}
+
+
+	public void Set_list_of_games_score_label(JLabel list_of_games_score_label)
+	{
+		this.list_of_games_score_label = list_of_games_score_label;
 	}
 }
