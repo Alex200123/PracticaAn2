@@ -55,31 +55,10 @@ public class Panels_class
 	
 	public void Add_components_to_list_of_games_panel(Buttons_class buttons, List_of_games existing_list)
 	{
-		//DE PUS AICI COD CA SA FAC BUTOANE CU FIECARE JOC PE CARE DACA LE APAS
-		//SA IMI ARATE DESCRIEREA SI NOTA JOCULUI
-		JButton temporar[] = new JButton[existing_list.Get_number_of_elements_in_list()];
+		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
-			index = i;
-			
-			temporar[i] = new JButton(existing_list.Get_games_list().get(i).Get_name());
-			temporar[i].addActionListener(new ActionListener()
-			{
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
-					{
-						if(Objects.equals(temporar[index].getName(), 
-								existing_list.Get_games_list().get(i).Get_name()))
-							{
-								System.out.println(existing_list.Get_games_list().get(i).Get_name());
-							}
-					}
-				}
-			 });
-			
-			list_of_games_panel.add(temporar[i]);
+			list_of_games_panel.add(buttons.Get_list_of_buttons_for_games()[i]);
 		}
 		
 		

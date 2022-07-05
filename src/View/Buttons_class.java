@@ -2,10 +2,14 @@ package View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Model.List_of_games;
 
 public class Buttons_class
 {
@@ -16,10 +20,14 @@ public class Buttons_class
 	private JButton add_game_to_list;
 	private JButton find_a_good_game_based_on_preferance;
 	private JButton rate_a_game;
+	private JButton list_of_buttons_for_games[];
+	private int number_of_buttons = 0;
 	
 	
-	public Buttons_class(JFrame main_frame, JFrame the_3_options_frame)
+	public Buttons_class(JFrame main_frame, JFrame the_3_options_frame, List_of_games existing_list)
 	{
+		list_of_buttons_for_games = new JButton[existing_list.Get_number_of_elements_in_list()];
+		
 		button_quit_main = new JButton("Exit");
 		button_quit_main.setBounds(320, 500, 100, 100);
 		Add_button_quit_main_functionality();
@@ -40,6 +48,16 @@ public class Buttons_class
 		
 		rate_a_game = new JButton("I am going to rate a game");
 		rate_a_game.setBounds(533, 300, 300, 100);
+		
+		
+		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
+		{
+			list_of_buttons_for_games[i] = new JButton(existing_list.Get_games_list().get(i).Get_name());
+			
+			number_of_buttons++;
+		}
+		Add_list_of_buttons_for_games_functionality(existing_list);
+		
 	}
 	
 	private void Add_button_quit_main_functionality()
@@ -53,6 +71,34 @@ public class Buttons_class
 				}
 			});
 	}
+	
+	
+	private void Add_list_of_buttons_for_games_functionality(List_of_games existing_list)
+	{
+		for(int i = 0; i < number_of_buttons; i ++)
+		{	
+			list_of_buttons_for_games[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					JButton temporar = (JButton) e.getSource();
+					for(int i = 0; i < number_of_buttons; i++)
+					{
+						if(Objects.equals(temporar.getText(), 
+								list_of_buttons_for_games[i].getText()))
+						{
+							
+							System.out.println(list_of_buttons_for_games[i].getText() + "\n");
+							System.out.println(existing_list.Get_games_list().get(i).Get_description() + "\n");
+							System.out.println(existing_list.Get_games_list().get(i).Get_score() + "\n");
+						}
+					}
+				}
+			});
+		}
+	}
+	
 	
 	private void Add_button_lets_start_main_functionality(JFrame main_frame, JFrame the_3_options_frame)
 	{
@@ -91,5 +137,10 @@ public class Buttons_class
 	public JButton Get_rate_a_game()
 	{
 		return rate_a_game;
+	}
+	
+	public JButton[] Get_list_of_buttons_for_games()
+	{
+		return list_of_buttons_for_games;
 	}
 }

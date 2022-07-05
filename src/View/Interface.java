@@ -34,7 +34,7 @@ public class Interface
 		labels = new Labels_class();
 		the_3_options_frame.setLayout(null);
 		list = new List_of_games(existing_list);
-		buttons = new Buttons_class(main_frame, the_3_options_frame); 
+		buttons = new Buttons_class(main_frame, the_3_options_frame, list); 
 		
 		panels.Add_components_to_main_panel(buttons, labels);
 		panels.Add_components_to_the_3_options_panell(buttons);
