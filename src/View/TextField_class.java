@@ -15,10 +15,10 @@ public class TextField_class {
 		text_field_game_description = new JTextField();
 		text_field_game_score =  new JTextField();
 		text_field_game_tag = new JTextField();
-		text_field_game_name.setBounds(200, 0, 300, 25);
-		text_field_game_description.setBounds(200, 25, 300, 25);
-		text_field_game_score.setBounds(200, 50, 300, 25);
-		text_field_game_tag.setBounds(200, 75, 300, 25);
+		text_field_game_name.setBounds(150, 200, 300, 25);
+		text_field_game_description.setBounds(150, 225, 300, 25);
+		text_field_game_score.setBounds(150, 250, 300, 25);
+		text_field_game_tag.setBounds(150, 275, 300, 25);
 	}
 	
 	

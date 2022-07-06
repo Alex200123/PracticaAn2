@@ -89,12 +89,13 @@ public class Panels_class
 		list_of_games_scroll_panel.setBounds(0, 700, 1000, 300);
 	}
 	
-	public void Add_components_to_the_3_options_panell(Buttons_class buttons)
+	public void Add_components_to_the_3_options_panell(Buttons_class buttons, Labels_class labels)
 	{
 		
 		the_3_options_panel.add(buttons.Get_add_game_to_list());
 		the_3_options_panel.add(buttons.Get_find_a_good_game_based_on_preferance());
 		the_3_options_panel.add(buttons.Get_rate_a_game());
+		the_3_options_panel.add(labels.Get_list_of_games_label_in_3_options_panel());
 	}
 	
 	public void Add_components_to_panel_that_pops_up_per_game(Buttons_class buttons)
@@ -112,6 +113,10 @@ public class Panels_class
 		add_a_game_panel.add(text_field.Get_text_field_game_description());
 		add_a_game_panel.add(text_field.Get_text_field_game_score());
 		add_a_game_panel.add(text_field.Get_text_field_game_tag());
+		add_a_game_panel.add(labels.Get_name_label_for_text_field());
+		add_a_game_panel.add(labels.Get_description_label_for_text_field());
+		add_a_game_panel.add(labels.Get_score_label_for_text_field());
+		add_a_game_panel.add(labels.Get_tag_label_for_text_field());
 	}
 	
 	public JPanel Get_main_panel()

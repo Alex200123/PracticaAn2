@@ -13,6 +13,13 @@ public class Labels_class
 	private JLabel main_label2;
 	private JLabel main_label3;
 	
+	private JLabel list_of_games_label_in_3_options_panel;
+	
+	private JLabel name_label_for_text_field;
+	private JLabel description_label_for_text_field;
+	private JLabel score_label_for_text_field;
+	private JLabel tag_label_for_text_field;
+	
 	private Vector<JLabel> list_of_games_description_label;
 	private Vector<JLabel> list_of_games_score_label;
 	
@@ -29,9 +36,28 @@ public class Labels_class
 		main_label3.setBounds(300, 150, 400, 25);
 		main_label3.setFont(new Font("Serif", Font. BOLD, 20));
 		
+		list_of_games_label_in_3_options_panel = new JLabel("The list of games you can interact with: ");
+		list_of_games_label_in_3_options_panel.setBounds(330, 650, 400, 25);
+		list_of_games_label_in_3_options_panel.setFont(new Font("Serif", Font. BOLD, 20));
+		
 		list_of_games_description_label = new Vector<JLabel>();
 		list_of_games_score_label = new Vector<JLabel>();
 		
+		name_label_for_text_field = new JLabel("Name");
+		name_label_for_text_field.setBounds(100, 200, 100, 25);
+		name_label_for_text_field.setFont(new Font("Serif", Font. BOLD, 20));
+		
+		description_label_for_text_field = new JLabel("Description");
+		description_label_for_text_field.setBounds(50, 225, 100, 25);
+		description_label_for_text_field.setFont(new Font("Serif", Font. BOLD, 20));
+		
+		score_label_for_text_field = new JLabel("Score");
+		score_label_for_text_field.setBounds(100, 250, 100, 25);
+		score_label_for_text_field.setFont(new Font("Serif", Font. BOLD, 20));
+		
+		tag_label_for_text_field = new JLabel("Tag");
+		tag_label_for_text_field.setBounds(100, 275, 100, 25);
+		tag_label_for_text_field.setFont(new Font("Serif", Font. BOLD, 20));
 		
 		
 		for(int j = 0; j < existing_list.Get_number_of_elements_in_list(); j++)
@@ -65,19 +91,36 @@ public class Labels_class
 	{
 		return main_label3;
 	}
-
-
 	
+	public JLabel Get_list_of_games_label_in_3_options_panel()
+	{
+		return list_of_games_label_in_3_options_panel;
+	}
 
+	public JLabel Get_name_label_for_text_field()
+	{
+		return name_label_for_text_field;
+	}
 
+	public JLabel Get_description_label_for_text_field()
+	{
+		return description_label_for_text_field;
+	}
+	
+	public JLabel Get_score_label_for_text_field()
+	{
+		return score_label_for_text_field;
+	}
+
+	public JLabel Get_tag_label_for_text_field()
+	{
+		return tag_label_for_text_field;
+	}
+	
 	public Vector<JLabel> Get_list_of_games_description_label() 
 	{
 		return list_of_games_description_label;
 	}
-
-
-	
-
 
 	public Vector<JLabel> Get_list_of_games_score_label() 
 	{

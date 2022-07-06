@@ -50,7 +50,7 @@ public class Interface
 				labels, text_fields, add_a_game_frame, panels); 
 		
 		panels.Add_components_to_main_panel(buttons, labels);
-		panels.Add_components_to_the_3_options_panell(buttons);
+		panels.Add_components_to_the_3_options_panell(buttons, labels);
 		panels.Add_components_to_list_of_games_panel(buttons, existing_list, labels);
 		panels.Add_components_to_add_a_game_panel(buttons, existing_list, labels,text_fields);
 		
