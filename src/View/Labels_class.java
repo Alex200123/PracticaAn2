@@ -19,6 +19,7 @@ public class Labels_class
 	private JLabel description_label_for_text_field;
 	private JLabel score_label_for_text_field;
 	private JLabel tag_label_for_text_field;
+	private JLabel tag_label_for_text_field_to_be_found;
 	
 	private Vector<JLabel> list_of_games_description_label;
 	private Vector<JLabel> list_of_games_score_label;
@@ -59,6 +60,10 @@ public class Labels_class
 		tag_label_for_text_field.setBounds(100, 275, 100, 25);
 		tag_label_for_text_field.setFont(new Font("Serif", Font. BOLD, 20));
 		
+		tag_label_for_text_field_to_be_found = new JLabel("Tag");
+		tag_label_for_text_field_to_be_found.setBounds(100, 275, 100, 25);
+		tag_label_for_text_field_to_be_found.setFont(new Font("Serif", Font. BOLD, 20));
+		
 		
 		for(int j = 0; j < existing_list.Get_number_of_elements_in_list(); j++)
 		{
@@ -95,6 +100,11 @@ public class Labels_class
 	public JLabel Get_list_of_games_label_in_3_options_panel()
 	{
 		return list_of_games_label_in_3_options_panel;
+	}
+	
+	public JLabel Get_tag_label_for_text_field_to_be_found()
+	{
+		return tag_label_for_text_field_to_be_found;
 	}
 
 	public JLabel Get_name_label_for_text_field()

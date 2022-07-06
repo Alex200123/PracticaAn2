@@ -2,6 +2,8 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,13 +27,21 @@ import Model.List_of_games;
 public class Panels_class 
 {
 	private JPanel main_panel;
+	
 	private JPanel list_of_games_panel;
+	
 	private JScrollPane list_of_games_scroll_panel;
+	
 	private JPanel the_3_options_panel;
+	
 	private Vector<JPanel> pop_up_description_per_game;
+	
 	private Vector<JScrollPane> pop_up_description_per_game_scroll;
+	
 	private JPanel add_a_game_panel;
-	private int index = 0;
+	
+	private JPanel find_me_a_game_panel;
+	
 
 	
 	Panels_class(List_of_games existing_list)
@@ -39,7 +49,7 @@ public class Panels_class
 		main_panel = new JPanel();
 		main_panel.setLayout(null);
 		main_panel.setBorder(BorderFactory.createBevelBorder(1));	
-		list_of_games_panel = new JPanel();
+		list_of_games_panel = new JPanel(new GridLayout());
 		
 		pop_up_description_per_game = new Vector<JPanel>();
 		pop_up_description_per_game_scroll = new Vector<JScrollPane>();
@@ -56,6 +66,9 @@ public class Panels_class
 		
 		add_a_game_panel = new JPanel();
 		add_a_game_panel.setLayout(null);
+		
+		find_me_a_game_panel = new JPanel();
+		find_me_a_game_panel.setLayout(null);
 	}
 	
 	
@@ -86,7 +99,8 @@ public class Panels_class
 		
 		
 		list_of_games_scroll_panel = new JScrollPane(list_of_games_panel);
-		list_of_games_scroll_panel.setBounds(0, 700, 1000, 300);
+		list_of_games_scroll_panel.setBounds(0, 700, 985, 263);
+		list_of_games_scroll_panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 	}
 	
 	public void Add_components_to_the_3_options_panell(Buttons_class buttons, Labels_class labels)
@@ -95,6 +109,9 @@ public class Panels_class
 		the_3_options_panel.add(buttons.Get_add_game_to_list());
 		the_3_options_panel.add(buttons.Get_find_a_good_game_based_on_preferance());
 		the_3_options_panel.add(buttons.Get_rate_a_game());
+		the_3_options_panel.add(buttons.Get_button_back_main());
+		the_3_options_panel.add(buttons.Get_button_save_list());
+		the_3_options_panel.add(buttons.Get_button_load_list());
 		the_3_options_panel.add(labels.Get_list_of_games_label_in_3_options_panel());
 	}
 	
@@ -106,9 +123,10 @@ public class Panels_class
 		the_3_options_panel.add(buttons.Get_rate_a_game());
 	}
 	
-	public void Add_components_to_add_a_game_panel(Buttons_class buttons, List_of_games existing_list, Labels_class labels, TextField_class text_field)
+	public void Add_components_to_add_a_game_panel(Buttons_class buttons, Labels_class labels, TextField_class text_field)
 	{
 		add_a_game_panel.add(buttons.Get_add_button_in_add_a_game());
+		add_a_game_panel.add(buttons.Get_add_game_to_list_back());
 		add_a_game_panel.add(text_field.Get_text_field_game_name());
 		add_a_game_panel.add(text_field.Get_text_field_game_description());
 		add_a_game_panel.add(text_field.Get_text_field_game_score());
@@ -119,6 +137,16 @@ public class Panels_class
 		add_a_game_panel.add(labels.Get_tag_label_for_text_field());
 	}
 	
+	public void Add_components_to_find_me_a_game_panel(Buttons_class buttons, Labels_class labels, TextField_class text_field)
+	{
+		find_me_a_game_panel.add(buttons.Get_find_game_in_find_a_good_game_based_on_preferance());
+		find_me_a_game_panel.add(buttons.Get_find_a_good_game_based_on_preferance_back());
+		find_me_a_game_panel.add(text_field.Get_text_field_game_tag_to_be_found());
+		find_me_a_game_panel.add(labels.Get_tag_label_for_text_field_to_be_found());
+	}
+	
+	
+	
 	public JPanel Get_main_panel()
 	{
 		return main_panel;
@@ -127,6 +155,11 @@ public class Panels_class
 	public JPanel Get_add_a_game_panel()
 	{
 		return add_a_game_panel;
+	}
+	
+	public JPanel Get_find_me_a_game_panel()
+	{
+		return find_me_a_game_panel;
 	}
 	
 	public JPanel Get_list_of_games_panel()

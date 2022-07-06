@@ -12,9 +12,29 @@
 	  "tag": "Strategy"
     },
   {
+    "name": "Titan Quest",
+      "description": "Go through different Mythologies and stop the Titan Tiphon from ending the reign of the Olimpian Gods",
+	  "score": 8,
+	  "tag": "Fantasy"
+  },
+  
+  {
     "name": "Kingdoms of Amalur",
       "description": "In a world governed by fate, you are the one that has no fate, and can choose your own path",
 	  "score": 9,
 	  "tag": "Fantasy"
+  },
+  
+  {
+    "name": "Halo 2",
+      "description": "Humanity is under attack by an alien alliance known as The Covenant, fight back to survive",
+	  "score": 7,
+	  "tag": "Action"
+  },
+  {
+    "name": "Age of Empires",
+      "description": "Play as different civilizations and win against others as you progress through the different eras of Human history",
+	  "score": 8,
+	  "tag": "Strategy"
   }
 ]

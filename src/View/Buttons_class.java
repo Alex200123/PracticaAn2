@@ -24,19 +24,36 @@ public class Buttons_class
 	private JButton button_quit_main;
 	private JButton button_lets_start_main;
 	
+	private JButton button_back_main;
+	
 	private JButton add_game_to_list;
+	private JButton add_game_to_list_back;
+	private JButton add_button_in_add_a_game;
+	
 	private JButton find_a_good_game_based_on_preferance;
+	private JButton find_game_in_find_a_good_game_based_on_preferance;
+	private JButton find_a_good_game_based_on_preferance_back;
+	
+	private JButton button_save_list;
+	private JButton button_load_list;
+	
 	private JButton rate_a_game;
+	private JButton rate_a_game_back_button;
+	private JButton rate_a_game_in_rate_a_game_button;
+	
+	
 	private Vector<JButton> list_of_buttons_for_games;
 	private Vector<JButton> list_of_back_buttons_in_list_of_buttons_for_games;
 	
 	
-	private JButton add_button_in_add_a_game;
+	
 	
 	
 	public Buttons_class(JFrame main_frame, JFrame the_3_options_frame, Vector<JFrame> list_of_games_description_frame, List_of_games existing_list, Labels_class labels,
-			TextField_class text_fields, JFrame add_a_game_frame, Panels_class panels)
+			TextField_class text_fields, JFrame add_a_game_frame, Panels_class panels, JFrame find_me_a_game_frame)
 	{
+		
+		
 		list_of_buttons_for_games = new Vector<JButton>();
 		list_of_back_buttons_in_list_of_buttons_for_games = new Vector<JButton>();
 		
@@ -45,18 +62,24 @@ public class Buttons_class
 		Add_button_quit_main_functionality();
 		
 		
+		button_save_list = new JButton("Save");
+		button_save_list.setBounds(0, 0, 100, 100);
+		
+		button_load_list = new JButton("Load");
+		button_load_list.setBounds(884, 0, 100, 100);
+		
 		button_lets_start_main = new JButton("Let's start");
 		button_lets_start_main.setBounds(520, 500, 100, 100);
 		Add_button_lets_start_main_functionality(main_frame, the_3_options_frame);
 		
 		
-		add_game_to_list = new JButton("Add a game");
+		add_game_to_list = new JButton("I am going to add a game");
 		add_game_to_list.setBounds(133, 300, 300, 100);
 		Add_add_game_to_list_functionality(add_a_game_frame, the_3_options_frame);
 		
-		find_a_good_game_based_on_preferance = new JButton("Find me a game");
+		find_a_good_game_based_on_preferance = new JButton("Find me a random game");
 		find_a_good_game_based_on_preferance.setBounds(333, 100, 300, 100);
-		
+		Add_find_a_good_game_based_on_preferance_functionality(the_3_options_frame, find_me_a_game_frame);
 		
 		rate_a_game = new JButton("I am going to rate a game");
 		rate_a_game.setBounds(533, 300, 300, 100);
@@ -73,11 +96,132 @@ public class Buttons_class
 		Add_list_of_buttons_for_games_functionality(existing_list, labels, list_of_games_description_frame);
 		Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame);
 		
-		
+		///SA ADAUG FUNCTIILE CARE IMPLEMENTEAZA FUNCTIONALITATEA LA BUTOANELE SAVE SI LOAD
 		add_button_in_add_a_game =  new JButton("Add game");
 		add_button_in_add_a_game.setBounds(250, 400, 100, 50);
-		Add_button_in_add_a_game_functionality(text_fields, existing_list, add_a_game_frame, labels, panels, the_3_options_frame, list_of_games_description_frame);
 		
+		add_game_to_list_back =  new JButton("Back");
+		add_game_to_list_back.setBounds(250, 325, 100, 50);
+		Add_button_in_add_a_game_functionality(text_fields, existing_list, add_a_game_frame, labels, panels, the_3_options_frame, list_of_games_description_frame);
+		Add_add_game_to_list_back_functionality(add_a_game_frame, the_3_options_frame);
+		
+		find_a_good_game_based_on_preferance_back = new JButton("Back");
+		find_a_good_game_based_on_preferance_back.setBounds(250, 325, 100, 50);
+		Add_find_a_good_game_based_on_preferance_back_functionality(the_3_options_frame, find_me_a_game_frame);
+		
+		button_back_main = new JButton("Back");
+		button_back_main.setBounds(333, 550, 300, 100);
+		Add_button_back_main_functionality(the_3_options_frame, main_frame);
+		
+		find_game_in_find_a_good_game_based_on_preferance =  new JButton("Find game");
+		find_game_in_find_a_good_game_based_on_preferance.setBounds(250, 400, 100, 50);
+		Add_find_game_in_find_a_good_game_based_on_preferance_functionality(the_3_options_frame, find_me_a_game_frame,  existing_list,
+				 list_of_games_description_frame,  text_fields);
+	}
+	
+	private void Add_button_load_list_functionality(JFrame the_3_options_frame, JFrame main_frame)
+	{
+			button_load_list.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					///DE IMPLEMENTAT CITIREA UNEI LISTE NOI(ADICA CE SALVEZ IN IN FISIERUL NOU CU 
+					//FUNCTIA DE SALVARE)
+				}
+			});
+	}
+	
+	private void Add_button_save_list_functionality(JFrame the_3_options_frame, JFrame main_frame)
+	{
+			button_save_list.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					///DE IMPLEMENTAT SALVAREA LISTEI CURENTE INTR-UN JSON(ADICA PRACTIC APELEZ FUNCTIA 
+					//DE O AM DEJA)
+				}
+			});
+	}
+	
+	
+	private void Add_button_back_main_functionality(JFrame the_3_options_frame, JFrame main_frame)
+	{
+			button_back_main.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(false);
+					main_frame.setVisible(true);
+				}
+			});
+	}
+	
+	private void Add_find_game_in_find_a_good_game_based_on_preferance_functionality(JFrame the_3_options_frame, JFrame find_me_a_game_frame, List_of_games existing_list,
+			Vector<JFrame> list_of_games_description_frame, TextField_class text_fields)
+	{
+			find_game_in_find_a_good_game_based_on_preferance.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					int min = 0;
+					String tag_to_be_found = text_fields.Get_text_field_game_tag_to_be_found().getText();
+					List_of_games temporary_game_list = new List_of_games();
+					
+					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
+					{
+						if(Objects.equals(tag_to_be_found, 
+								existing_list.Get_games_list().get(i).Get_tag()))
+								{
+									temporary_game_list.Add_game_to_list(existing_list.Get_games_list().get(i));
+								}
+					}
+					
+					int range = temporary_game_list.Get_number_of_elements_in_list() - min ;
+					int rand = (int)(Math.random() * range) + min;
+					
+					String temporary_game_name = temporary_game_list.Get_games_list().get(rand).Get_name();
+					
+					
+					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
+					{
+						if(Objects.equals(temporary_game_name, 
+								existing_list.Get_games_list().get(i).Get_name()))
+								{
+									list_of_games_description_frame.get(i).setVisible(true);
+								}
+					}
+				}
+			});
+	}
+	
+	private void Add_find_a_good_game_based_on_preferance_functionality(JFrame the_3_options_frame, JFrame find_me_a_game_frame)
+	{
+			find_a_good_game_based_on_preferance.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(false);
+					find_me_a_game_frame.setVisible(true);
+				}
+			});
+	}
+	
+	private void Add_find_a_good_game_based_on_preferance_back_functionality(JFrame the_3_options_frame, JFrame find_me_a_game_frame)
+	{
+			find_a_good_game_based_on_preferance_back.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(true);
+					find_me_a_game_frame.setVisible(false);
+				}
+			});
 	}
 	
 	private void Add_button_quit_main_functionality()
@@ -114,6 +258,19 @@ public class Buttons_class
 				}
 			});
 		}
+	}
+	
+	private void Add_add_game_to_list_back_functionality(JFrame add_a_game_frame, JFrame the_3_options_frame)
+	{
+			add_game_to_list_back.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{ 
+					 add_a_game_frame.setVisible(false);
+					 the_3_options_frame.setVisible(true);
+				}
+			});
 	}
 	
 	
@@ -223,25 +380,54 @@ public class Buttons_class
 	}
 	
 	
+	public JButton Get_button_load_list()
+	{
+		return button_load_list;
+	} 
+	
+	public JButton Get_button_save_list()
+	{
+		return button_save_list;
+	}
+	
+	public JButton Get_button_back_main()
+	{
+		return button_back_main;
+	}
+	
 	public JButton Get_button_quit_main()
 	{
 		return button_quit_main;
+	}
+	
+	public JButton Get_find_game_in_find_a_good_game_based_on_preferance()
+	{
+		return find_game_in_find_a_good_game_based_on_preferance;
 	}
 	
 	public JButton Get_button_lets_start_main()
 	{
 		return button_lets_start_main;
 	}
-	
-	
+		
 	public JButton Get_add_game_to_list()
 	{
 		return add_game_to_list;
 	}
 	
+	public JButton Get_add_game_to_list_back()
+	{
+		return add_game_to_list_back;
+	}
+	
 	public JButton Get_find_a_good_game_based_on_preferance()
 	{
 		return find_a_good_game_based_on_preferance;
+	}
+	
+	public JButton Get_find_a_good_game_based_on_preferance_back()
+	{
+		return find_a_good_game_based_on_preferance_back;
 	}
 	
 	public JButton Get_rate_a_game()

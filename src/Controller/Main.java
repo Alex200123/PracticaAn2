@@ -13,8 +13,8 @@ public class Main {
 		Save_data saved = new Save_data();
 		
 		
-		//test.Read_games_from_JSON(list);
-		test.Read_games_from_JSON_saved_list(list);
+		test.Read_games_from_JSON(list);
+		//test.Read_games_from_JSON_saved_list(list);
 		list.Write_games();
 		saved.Create_JSON(list);
 		Interface gui = new Interface(list);
