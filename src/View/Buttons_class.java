@@ -175,11 +175,6 @@ public class Buttons_class
 						
 					}
 					
-					
-					
-					existing_list.Write_games();
-					
-					
 					the_3_options_frame.setVisible(true);
 					
 					
