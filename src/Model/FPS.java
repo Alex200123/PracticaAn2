@@ -58,4 +58,10 @@ public class FPS implements Video_game_genre
 		this.tag = "Action";
 		
 	}
+	
+	@Override
+	public void Set_score(long s) {
+		this.score = s;
+		
+	}
 }

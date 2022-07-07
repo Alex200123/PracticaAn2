@@ -21,9 +21,12 @@ public class Labels_class
 	private JLabel tag_label_for_text_field;
 	private JLabel tag_label_for_text_field_to_be_found;
 	
+	
 	private Vector<JLabel> list_of_games_description_label;
 	private Vector<JLabel> list_of_games_score_label;
 	
+	private JLabel list_of_games_score_label_in_rate_a_game;
+	private JLabel list_of_games_name_label_in_rate_a_game;
 	
 	Labels_class(List_of_games existing_list)
 	{
@@ -43,6 +46,14 @@ public class Labels_class
 		
 		list_of_games_description_label = new Vector<JLabel>();
 		list_of_games_score_label = new Vector<JLabel>();
+		
+		list_of_games_score_label_in_rate_a_game = new JLabel("Score");
+		list_of_games_score_label_in_rate_a_game.setBounds(100, 275, 100, 25);
+		list_of_games_score_label_in_rate_a_game.setFont(new Font("Serif", Font. BOLD, 20));
+		
+		list_of_games_name_label_in_rate_a_game = new JLabel("Name");
+		list_of_games_name_label_in_rate_a_game.setBounds(100, 250, 100, 25);
+		list_of_games_name_label_in_rate_a_game.setFont(new Font("Serif", Font. BOLD, 20));
 		
 		name_label_for_text_field = new JLabel("Name");
 		name_label_for_text_field.setBounds(100, 200, 100, 25);
@@ -78,9 +89,21 @@ public class Labels_class
 			temp_score.setBounds(0, 25, 150, 25);
 			temp_score.setFont(new Font("Serif", Font. BOLD, 20));			
 			list_of_games_score_label.add(temp_score);
+			
+			
+		
 		}
 	}
 	
+	public JLabel Get_list_of_games_name_label_in_rate_a_game()
+	{
+		return list_of_games_name_label_in_rate_a_game;
+	}
+	
+	public JLabel Get_list_of_games_score_label_in_rate_a_game()
+	{
+		return list_of_games_score_label_in_rate_a_game;
+	}
 	
 	public JLabel Get_main_label1()
 	{

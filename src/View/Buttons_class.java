@@ -1,6 +1,8 @@
 package View;
 
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
@@ -41,7 +43,6 @@ public class Buttons_class
 	private JButton rate_a_game_back_button;
 	private JButton rate_a_game_in_rate_a_game_button;
 	
-	
 	private Vector<JButton> list_of_buttons_for_games;
 	private Vector<JButton> list_of_back_buttons_in_list_of_buttons_for_games;
 	
@@ -50,12 +51,23 @@ public class Buttons_class
 	
 	
 	public Buttons_class(JFrame main_frame, JFrame the_3_options_frame, Vector<JFrame> list_of_games_description_frame, List_of_games existing_list, Labels_class labels,
-			TextField_class text_fields, JFrame add_a_game_frame, Panels_class panels, JFrame find_me_a_game_frame)
+			TextField_class text_fields, JFrame add_a_game_frame, Panels_class panels, JFrame find_me_a_game_frame,  
+			JFrame rate_a_game_frame)
 	{
 		
 		
 		list_of_buttons_for_games = new Vector<JButton>();
 		list_of_back_buttons_in_list_of_buttons_for_games = new Vector<JButton>();
+		
+		rate_a_game_in_rate_a_game_button = new JButton("Rate a game");
+		rate_a_game_in_rate_a_game_button.setBounds(225, 400, 150, 50);
+		
+		rate_a_game_back_button = new JButton("Back");
+		rate_a_game_back_button.setBounds(250, 325, 100, 50);
+		
+		
+		rate_a_game = new JButton("I am going to rate a game");
+		rate_a_game.setBounds(533, 300, 300, 100);
 		
 		button_quit_main = new JButton("Exit");
 		button_quit_main.setBounds(320, 500, 100, 100);
@@ -81,8 +93,19 @@ public class Buttons_class
 		find_a_good_game_based_on_preferance.setBounds(333, 100, 300, 100);
 		Add_find_a_good_game_based_on_preferance_functionality(the_3_options_frame, find_me_a_game_frame);
 		
-		rate_a_game = new JButton("I am going to rate a game");
-		rate_a_game.setBounds(533, 300, 300, 100);
+		
+		
+		
+		
+		
+		
+		
+				
+		Add_rate_a_game_functionality( the_3_options_frame, rate_a_game_frame);
+		Add_rate_a_game_back_button_functionality( the_3_options_frame,  rate_a_game_frame);
+		Add_rate_a_game_in_rate_a_game_button_functionality(  the_3_options_frame, rate_a_game_frame, 
+				 existing_list,  text_fields,   labels,  panels,
+				 list_of_games_description_frame);
 		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
@@ -94,7 +117,7 @@ public class Buttons_class
 			
 		}
 		Add_list_of_buttons_for_games_functionality(existing_list, labels, list_of_games_description_frame);
-		Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame);
+		Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame, existing_list);
 		
 		///SA ADAUG FUNCTIILE CARE IMPLEMENTEAZA FUNCTIONALITATEA LA BUTOANELE SAVE SI LOAD
 		add_button_in_add_a_game =  new JButton("Add game");
@@ -119,7 +142,85 @@ public class Buttons_class
 				 list_of_games_description_frame,  text_fields);
 	}
 	
-	private void Add_button_load_list_functionality(JFrame the_3_options_frame, JFrame main_frame)
+
+	private void Add_rate_a_game_in_rate_a_game_button_functionality( JFrame the_3_options_frame,JFrame rate_a_game_frame, 
+			List_of_games existing_list, TextField_class text_fields,  Labels_class labels, Panels_class panels,
+			Vector<JFrame> list_of_games_description_frame)
+	{
+		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i ++)
+		{
+			rate_a_game_in_rate_a_game_button.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					rate_a_game_frame.setVisible(false);
+					
+					String temporary_name = text_fields.Get_text_field_game_name_to_be_rated().getText();
+					String score_of_game = text_fields.Get_text_field_game_score_to_be_rated().getText(); 
+				    long score = Long.parseLong(score_of_game);
+				    
+					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i ++)
+					{
+						if(Objects.equals(temporary_name,  list_of_buttons_for_games.get(i).getText()))
+						{
+							existing_list.Get_games_list().get(i).Set_score(score);	
+							
+							
+							final String temp = score + "";
+							labels.Get_list_of_games_score_label().get(i).setText("Score: " + temp);
+							
+							
+						}
+						
+					}
+					
+					
+					
+					existing_list.Write_games();
+					
+					
+					the_3_options_frame.setVisible(true);
+					
+					
+				}
+			});
+		}
+		
+	}
+	
+	
+	
+	private void Add_rate_a_game_functionality(JFrame the_3_options_frame, JFrame rate_a_game_frame)
+	{
+			rate_a_game.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(false);
+					rate_a_game_frame.setVisible(true);
+				
+				}
+			});
+	}
+	
+	
+	private void Add_rate_a_game_back_button_functionality(JFrame the_3_options_frame, JFrame rate_a_game_frame)
+	{
+			rate_a_game_back_button.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(true);
+					rate_a_game_frame.setVisible(false);
+				
+				}
+			});
+	}
+	
+	private void Add_button_load_list_functionality()
 	{
 			button_load_list.addActionListener(new ActionListener()
 			{
@@ -132,7 +233,7 @@ public class Buttons_class
 			});
 	}
 	
-	private void Add_button_save_list_functionality(JFrame the_3_options_frame, JFrame main_frame)
+	private void Add_button_save_list_functionality()
 	{
 			button_save_list.addActionListener(new ActionListener()
 			{
@@ -236,9 +337,9 @@ public class Buttons_class
 			});
 	}
 	
-	private void Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(Vector<JFrame> list_of_games_description_frame)
+	private void Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(Vector<JFrame> list_of_games_description_frame, List_of_games existing_list)
 	{
-		for(int i = 0; i < list_of_back_buttons_in_list_of_buttons_for_games.size(); i ++)
+		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i ++)
 		{	
 			list_of_back_buttons_in_list_of_buttons_for_games.get(i).addActionListener(new ActionListener()
 			{
@@ -380,6 +481,19 @@ public class Buttons_class
 	}
 	
 	
+	
+	
+	
+	public JButton Get_rate_a_game_in_rate_a_game_button()
+	{
+		return  rate_a_game_in_rate_a_game_button;
+	}
+	
+	public JButton Get_rate_a_game_back_button()
+	{
+		return rate_a_game_back_button;
+	} 
+	
 	public JButton Get_button_load_list()
 	{
 		return button_load_list;
@@ -466,41 +580,40 @@ public class Buttons_class
    	 
    	 
    	 JLabel temp_description = new JLabel(description_of_game);
-		 temp_description.setBounds(0, 0, 1000, 25);
-		 temp_description.setFont(new Font("Serif", Font. BOLD, 20));
-		 labels.Get_list_of_games_description_label().add(temp_description);
+	 temp_description.setBounds(0, 0, 1000, 25);
+	 temp_description.setFont(new Font("Serif", Font. BOLD, 20));
+	 labels.Get_list_of_games_description_label().add(temp_description);
+		 
+	 JButton temp_list_of_back_buttons_in_list_of_buttons_for_games = new JButton("Back");
+	 temp_list_of_back_buttons_in_list_of_buttons_for_games.setBounds(30, 100, 300, 100);
+	 list_of_back_buttons_in_list_of_buttons_for_games.add(temp_list_of_back_buttons_in_list_of_buttons_for_games);
+	 Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame, existing_list);
 		 
 		 
-		 JButton temp_list_of_back_buttons_in_list_of_buttons_for_games = new JButton("Back");
-		 temp_list_of_back_buttons_in_list_of_buttons_for_games.setBounds(30, 100, 300, 100);
-		 list_of_back_buttons_in_list_of_buttons_for_games.add(temp_list_of_back_buttons_in_list_of_buttons_for_games);
-		 Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame);
+	 final String temp = score + "";
+	 JLabel temp_score = new JLabel(temp);
+	 temp_score = new JLabel("Score: " + temp);
+	 temp_score.setBounds(0, 25, 150, 25);
+	 temp_score.setFont(new Font("Serif", Font. BOLD, 20));
+	 labels.Get_list_of_games_score_label().add(temp_score);
 		 
+	 JPanel temp_pop_up_panel = new JPanel();
+	 temp_pop_up_panel.setLayout(null);
+	 temp_pop_up_panel.add(temp_description);
+	 temp_pop_up_panel.add(temp_score);
+	 temp_pop_up_panel.add( temp_list_of_back_buttons_in_list_of_buttons_for_games);
+	 panels.Get_pop_up_description_per_game().add(temp_pop_up_panel); 
 		 
-		 final String temp = score + "";
-		 JLabel temp_score = new JLabel(temp);
-		 temp_score = new JLabel("Score: " + temp);
-		 temp_score.setBounds(0, 25, 150, 25);
-		 temp_score.setFont(new Font("Serif", Font. BOLD, 20));
-		 labels.Get_list_of_games_score_label().add(temp_score);
+	 JScrollPane temp_scroll_description = new JScrollPane(temp_pop_up_panel);
+	 temp_scroll_description.setBounds(0, 0, 1500, 300);
+	 panels.Get_pop_up_description_per_game_scroll().add(temp_scroll_description);
 		 
-		 JPanel temp_pop_up_panel = new JPanel();
-		 temp_pop_up_panel.setLayout(null);
-		 temp_pop_up_panel.add(temp_description);
-		 temp_pop_up_panel.add(temp_score);
-		 temp_pop_up_panel.add( temp_list_of_back_buttons_in_list_of_buttons_for_games);
-		 panels.Get_pop_up_description_per_game().add(temp_pop_up_panel); 
-		 
-		 JScrollPane temp_scroll_description = new JScrollPane(temp_pop_up_panel);
-		 temp_scroll_description.setBounds(0, 0, 1500, 300);
-		 panels.Get_pop_up_description_per_game_scroll().add(temp_scroll_description);
-		 
-		 JFrame temp_list_of_games_description = new JFrame();
-		 temp_list_of_games_description.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 temp_list_of_games_description.setTitle("Game information");
-		 temp_list_of_games_description.setSize(1500, 300);
-		 temp_list_of_games_description.add(panels.Get_pop_up_description_per_game_scroll().get(panels.Get_pop_up_description_per_game_scroll().size()-1));
-		 list_of_games_description_frame.add(temp_list_of_games_description);
-		 the_3_options_frame.add(panels.Get_list_of_games_scroll_panel());
+	 JFrame temp_list_of_games_description = new JFrame();
+	 temp_list_of_games_description.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 temp_list_of_games_description.setTitle("Game information");
+	 temp_list_of_games_description.setSize(1500, 300);
+	 temp_list_of_games_description.add(panels.Get_pop_up_description_per_game_scroll().get(panels.Get_pop_up_description_per_game_scroll().size()-1));
+	 list_of_games_description_frame.add(temp_list_of_games_description);
+	 the_3_options_frame.add(panels.Get_list_of_games_scroll_panel());
 	}
 }

@@ -57,4 +57,10 @@ public class RTS implements Video_game_genre {
 		
 	}
 
+	@Override
+	public void Set_score(long s) {
+		this.score = s;
+		
+	}
+
 }

@@ -15,7 +15,7 @@ public class Main {
 		
 		test.Read_games_from_JSON(list);
 		//test.Read_games_from_JSON_saved_list(list);
-		list.Write_games();
+		//list.Write_games();
 		saved.Create_JSON(list);
 		Interface gui = new Interface(list);
 		

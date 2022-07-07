@@ -42,6 +42,8 @@ public class Panels_class
 	
 	private JPanel find_me_a_game_panel;
 	
+	
+	private JPanel rate_a_game_panel;
 
 	
 	Panels_class(List_of_games existing_list)
@@ -53,6 +55,9 @@ public class Panels_class
 		
 		pop_up_description_per_game = new Vector<JPanel>();
 		pop_up_description_per_game_scroll = new Vector<JScrollPane>();
+		
+		
+		
 		the_3_options_panel = new JPanel();
 		the_3_options_panel.setBounds(0, 0, 1000, 700);
 		the_3_options_panel.setLayout(null);
@@ -69,6 +74,25 @@ public class Panels_class
 		
 		find_me_a_game_panel = new JPanel();
 		find_me_a_game_panel.setLayout(null);
+		
+		
+		
+		rate_a_game_panel = new JPanel();
+		rate_a_game_panel.setLayout(null);
+		
+	}
+	
+	
+	public void Add_components_to_rate_a_game_panel(Buttons_class buttons, List_of_games existing_list, TextField_class text_field, Labels_class labels)
+	{
+		
+			rate_a_game_panel.add(buttons.Get_rate_a_game_in_rate_a_game_button());
+			rate_a_game_panel.add(buttons.Get_rate_a_game_back_button());
+			rate_a_game_panel.add(labels.Get_list_of_games_name_label_in_rate_a_game());
+			rate_a_game_panel.add(labels.Get_list_of_games_score_label_in_rate_a_game());
+			rate_a_game_panel.add(text_field.Get_text_field_game_score_to_be_rated());
+			rate_a_game_panel.add(text_field.Get_text_field_game_name_to_be_rated());
+		
 	}
 	
 	
@@ -143,6 +167,15 @@ public class Panels_class
 		find_me_a_game_panel.add(buttons.Get_find_a_good_game_based_on_preferance_back());
 		find_me_a_game_panel.add(text_field.Get_text_field_game_tag_to_be_found());
 		find_me_a_game_panel.add(labels.Get_tag_label_for_text_field_to_be_found());
+	}
+	
+
+	
+	
+	
+	public JPanel Get_rate_a_game_panell()
+	{
+		return rate_a_game_panel;
 	}
 	
 	

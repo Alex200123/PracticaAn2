@@ -58,4 +58,10 @@ public class RPG implements Video_game_genre
 		this.tag = "Fantasy";
 		
 	}
+	
+	@Override
+	public void Set_score(long s) {
+		this.score = s;
+		
+	}
 }
