@@ -3,6 +3,7 @@ package View;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Controller.Load_data;
+import Controller.Save_data;
 import Model.FPS;
 import Model.List_of_games;
 import Model.RPG;
@@ -76,9 +79,12 @@ public class Buttons_class
 		
 		button_save_list = new JButton("Save");
 		button_save_list.setBounds(0, 0, 100, 100);
+		Add_button_save_list_functionality(existing_list);
 		
 		button_load_list = new JButton("Load");
 		button_load_list.setBounds(884, 0, 100, 100);
+		Add_button_load_list_functionality(the_3_options_frame, list_of_games_description_frame,
+				existing_list, labels, panels);
 		
 		button_lets_start_main = new JButton("Let's start");
 		button_lets_start_main.setBounds(520, 500, 100, 100);
@@ -93,12 +99,7 @@ public class Buttons_class
 		find_a_good_game_based_on_preferance.setBounds(333, 100, 300, 100);
 		Add_find_a_good_game_based_on_preferance_functionality(the_3_options_frame, find_me_a_game_frame);
 		
-		
-		
-		
-		
-		
-		
+
 		
 				
 		Add_rate_a_game_functionality( the_3_options_frame, rate_a_game_frame);
@@ -119,7 +120,7 @@ public class Buttons_class
 		Add_list_of_buttons_for_games_functionality(existing_list, labels, list_of_games_description_frame);
 		Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame, existing_list);
 		
-		///SA ADAUG FUNCTIILE CARE IMPLEMENTEAZA FUNCTIONALITATEA LA BUTOANELE SAVE SI LOAD
+		
 		add_button_in_add_a_game =  new JButton("Add game");
 		add_button_in_add_a_game.setBounds(250, 400, 100, 50);
 		
@@ -142,6 +143,104 @@ public class Buttons_class
 				 list_of_games_description_frame,  text_fields);
 	}
 	
+	
+	private void Add_button_load_list_functionality(JFrame the_3_options_frame, Vector<JFrame> list_of_games_description_frame,
+			List_of_games existing_list, Labels_class labels, Panels_class panels)
+	{
+			button_load_list.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					the_3_options_frame.setVisible(false);
+					existing_list.Get_games_list().removeAllElements();
+					
+					Load_data load = new Load_data();
+					load.Read_games_from_JSON_saved_list(existing_list);
+					
+					labels.Get_list_of_games_description_label().removeAllElements();
+					labels.Get_list_of_games_score_label().removeAllElements();
+					
+					
+					list_of_buttons_for_games.removeAllElements();
+				    list_of_back_buttons_in_list_of_buttons_for_games.removeAllElements();
+					
+					panels.Get_pop_up_description_per_game().removeAllElements();
+					panels.Get_list_of_games_panel().removeAll();
+					panels.Get_pop_up_description_per_game_scroll().removeAllElements();;
+					
+					list_of_games_description_frame.removeAllElements();
+					
+					for(int j = 0; j < existing_list.Get_number_of_elements_in_list(); j++)
+					{
+						JLabel temp_description = new JLabel(existing_list.Get_games_list().get(j).Get_description());
+						temp_description.setBounds(0, 0, 1000, 25);
+						temp_description.setFont(new Font("Serif", Font. BOLD, 20));
+						labels.Get_list_of_games_description_label().add(temp_description);
+						
+						final String temp = existing_list.Get_games_list().get(j).Get_score() + "";
+						JLabel temp_score = new JLabel(temp);
+						temp_score = new JLabel("Score: " + temp);
+						temp_score.setBounds(0, 25, 150, 25);
+						temp_score.setFont(new Font("Serif", Font. BOLD, 20));			
+						labels.Get_list_of_games_score_label().add(temp_score);
+						
+						JButton temp_list_of_buttons_for_games = new JButton(existing_list.Get_games_list().get(j).Get_name());
+						list_of_buttons_for_games.add(temp_list_of_buttons_for_games);
+						
+						JButton temp_list_of_back_buttons_in_list_of_buttons_for_games = new JButton("Back");
+						temp_list_of_back_buttons_in_list_of_buttons_for_games.setBounds(30, 100, 300, 100);
+						list_of_back_buttons_in_list_of_buttons_for_games.add(temp_list_of_back_buttons_in_list_of_buttons_for_games);
+						
+						panels.Get_list_of_games_panel().add(list_of_buttons_for_games.get(j));
+						
+						JPanel temp_description_panel = new JPanel();
+						temp_description_panel.setLayout(null);
+						panels.Get_pop_up_description_per_game().add(temp_description_panel);
+						
+						panels.Get_pop_up_description_per_game().get(j).add(labels.Get_list_of_games_description_label().get(j));
+						panels.Get_pop_up_description_per_game().get(j).add(labels.Get_list_of_games_score_label().get(j));
+						panels.Get_pop_up_description_per_game().get(j).add(list_of_back_buttons_in_list_of_buttons_for_games.get(j));
+					
+						
+						JScrollPane temp_scroll_description = new JScrollPane(panels.Get_pop_up_description_per_game().get(j));
+						temp_scroll_description.setBounds(0, 0, 1500, 300);
+						panels.Get_pop_up_description_per_game_scroll().add(temp_scroll_description);
+						
+						JFrame temp_list_of_games_description_frame = new JFrame();
+						temp_list_of_games_description_frame.setLayout(null);
+						list_of_games_description_frame.add(temp_list_of_games_description_frame);
+						list_of_games_description_frame.get(j).setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						list_of_games_description_frame.get(j).setTitle(existing_list.Get_games_list().get(j).Get_name());
+						list_of_games_description_frame.get(j).setSize(1500, 300);
+						list_of_games_description_frame.get(j).add(panels.Get_pop_up_description_per_game_scroll().get(j));
+						
+					}
+					
+					
+					
+					Add_list_of_buttons_for_games_functionality(existing_list, labels, list_of_games_description_frame);
+					Add_list_of_back_buttons_in_list_of_buttons_for_games_functionality(list_of_games_description_frame, existing_list);
+					
+					
+					the_3_options_frame.setVisible(true);
+					
+				}
+			});
+	}
+	
+	private void Add_button_save_list_functionality(List_of_games existing_list)
+	{
+			button_save_list.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					Save_data saved = new Save_data();
+					saved.Create_JSON(existing_list);
+				}
+			});
+	}
 
 	private void Add_rate_a_game_in_rate_a_game_button_functionality( JFrame the_3_options_frame,JFrame rate_a_game_frame, 
 			List_of_games existing_list, TextField_class text_fields,  Labels_class labels, Panels_class panels,
@@ -169,8 +268,6 @@ public class Buttons_class
 							
 							final String temp = score + "";
 							labels.Get_list_of_games_score_label().get(i).setText("Score: " + temp);
-							
-							
 						}
 						
 					}
@@ -215,31 +312,7 @@ public class Buttons_class
 			});
 	}
 	
-	private void Add_button_load_list_functionality()
-	{
-			button_load_list.addActionListener(new ActionListener()
-			{
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-					///DE IMPLEMENTAT CITIREA UNEI LISTE NOI(ADICA CE SALVEZ IN IN FISIERUL NOU CU 
-					//FUNCTIA DE SALVARE)
-				}
-			});
-	}
 	
-	private void Add_button_save_list_functionality()
-	{
-			button_save_list.addActionListener(new ActionListener()
-			{
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-					///DE IMPLEMENTAT SALVAREA LISTEI CURENTE INTR-UN JSON(ADICA PRACTIC APELEZ FUNCTIA 
-					//DE O AM DEJA)
-				}
-			});
-	}
 	
 	
 	private void Add_button_back_main_functionality(JFrame the_3_options_frame, JFrame main_frame)
@@ -342,7 +415,7 @@ public class Buttons_class
 				public void actionPerformed(ActionEvent e)
 				{	
 					JButton temporar = (JButton) e.getSource();
-					for(int i = 0; i < list_of_back_buttons_in_list_of_buttons_for_games.size(); i++)
+					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 					{
 						if(Objects.equals(temporar, 
 								list_of_back_buttons_in_list_of_buttons_for_games.get(i)))
@@ -372,7 +445,7 @@ public class Buttons_class
 	
 	private void Add_list_of_buttons_for_games_functionality(List_of_games existing_list, Labels_class labels,  Vector<JFrame> list_of_games_description_frame)
 	{
-		for(int i = 0; i < list_of_buttons_for_games.size(); i++)
+		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{	
 			list_of_buttons_for_games.get(i).addActionListener(new ActionListener()
 			{
@@ -380,7 +453,7 @@ public class Buttons_class
 				public void actionPerformed(ActionEvent e)
 				{
 					JButton temporar = (JButton) e.getSource();
-					for(int i = 0; i < list_of_buttons_for_games.size(); i++)
+					for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 					{
 						if(Objects.equals(temporar.getText(), 
 								list_of_buttons_for_games.get(i).getText()))

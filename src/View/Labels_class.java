@@ -89,9 +89,6 @@ public class Labels_class
 			temp_score.setBounds(0, 25, 150, 25);
 			temp_score.setFont(new Font("Serif", Font. BOLD, 20));			
 			list_of_games_score_label.add(temp_score);
-			
-			
-		
 		}
 	}
 	
