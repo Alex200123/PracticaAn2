@@ -41,7 +41,7 @@ public class Labels_class
 		main_label3.setFont(new Font("Serif", Font. BOLD, 20));
 		
 		list_of_games_label_in_3_options_panel = new JLabel("The list of games you can interact with: ");
-		list_of_games_label_in_3_options_panel.setBounds(330, 650, 400, 25);
+		list_of_games_label_in_3_options_panel.setBounds(330, 310, 400, 25);
 		list_of_games_label_in_3_options_panel.setFont(new Font("Serif", Font. BOLD, 20));
 		
 		list_of_games_description_label = new Vector<JLabel>();

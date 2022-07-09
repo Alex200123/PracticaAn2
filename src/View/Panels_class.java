@@ -59,7 +59,7 @@ public class Panels_class
 		
 		
 		the_3_options_panel = new JPanel();
-		the_3_options_panel.setBounds(0, 0, 1000, 700);
+		the_3_options_panel.setBounds(0, 0, 1000, 350);
 		the_3_options_panel.setLayout(null);
 		
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
@@ -123,7 +123,7 @@ public class Panels_class
 		
 		
 		list_of_games_scroll_panel = new JScrollPane(list_of_games_panel);
-		list_of_games_scroll_panel.setBounds(0, 700, 985, 263);
+		list_of_games_scroll_panel.setBounds(0, 351, 985, 263);
 		list_of_games_scroll_panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 	}
 	

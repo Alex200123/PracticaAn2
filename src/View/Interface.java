@@ -42,7 +42,7 @@ public class Interface
 		for(int i = 0; i < existing_list.Get_number_of_elements_in_list(); i++)
 		{
 			JFrame temp_list_of_games_description_frame = new JFrame();
-			temp_list_of_games_description_frame.setLayout(null);
+			
 			list_of_games_description_frame.add(temp_list_of_games_description_frame);
 			
 			
@@ -80,7 +80,7 @@ public class Interface
 		
 		the_3_options_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		the_3_options_frame.setTitle("Game Review");
-		the_3_options_frame.setSize(1000,1000);
+		the_3_options_frame.setSize(1000,650);
 		the_3_options_frame.add(panels.Get_the_3_options_panel());
 		the_3_options_frame.add(panels.Get_list_of_games_scroll_panel());
 		

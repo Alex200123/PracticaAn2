@@ -70,7 +70,7 @@ public class Buttons_class
 		
 		
 		rate_a_game = new JButton("I am going to rate a game");
-		rate_a_game.setBounds(533, 300, 300, 100);
+		rate_a_game.setBounds(533, 200, 300, 50);
 		
 		button_quit_main = new JButton("Exit");
 		button_quit_main.setBounds(320, 500, 100, 100);
@@ -92,11 +92,11 @@ public class Buttons_class
 		
 		
 		add_game_to_list = new JButton("I am going to add a game");
-		add_game_to_list.setBounds(133, 300, 300, 100);
+		add_game_to_list.setBounds(133, 200, 300, 50);
 		Add_add_game_to_list_functionality(add_a_game_frame, the_3_options_frame);
 		
 		find_a_good_game_based_on_preferance = new JButton("Find me a random game");
-		find_a_good_game_based_on_preferance.setBounds(333, 100, 300, 100);
+		find_a_good_game_based_on_preferance.setBounds(333, 100, 300, 50);
 		Add_find_a_good_game_based_on_preferance_functionality(the_3_options_frame, find_me_a_game_frame);
 		
 
@@ -134,7 +134,7 @@ public class Buttons_class
 		Add_find_a_good_game_based_on_preferance_back_functionality(the_3_options_frame, find_me_a_game_frame);
 		
 		button_back_main = new JButton("Back");
-		button_back_main.setBounds(333, 550, 300, 100);
+		button_back_main.setBounds(333, 255, 300, 50);
 		Add_button_back_main_functionality(the_3_options_frame, main_frame);
 		
 		find_game_in_find_a_good_game_based_on_preferance =  new JButton("Find game");
@@ -208,7 +208,7 @@ public class Buttons_class
 						panels.Get_pop_up_description_per_game_scroll().add(temp_scroll_description);
 						
 						JFrame temp_list_of_games_description_frame = new JFrame();
-						temp_list_of_games_description_frame.setLayout(null);
+						
 						list_of_games_description_frame.add(temp_list_of_games_description_frame);
 						list_of_games_description_frame.get(j).setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						list_of_games_description_frame.get(j).setTitle(existing_list.Get_games_list().get(j).Get_name());
